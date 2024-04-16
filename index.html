@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Listing</title>
+    <!-- Font Awesome for social media icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Light mode styles */
+        body.light-mode {
+            background-color: #f9f9f9;
+            color: #333;
+            font-family: Arial, sans-serif;
+            margin: 0;
+        }
+
+        header.light-mode,
+        footer.light-mode,
+        nav.light-mode {
+            background-color: #4a90e2;
+            color: #fff;
+        }
+
+        nav.light-mode ul li a {
+            color: #fff;
+            text-transform: uppercase;
+            padding: 5px 10px;
+            border-radius: 3px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        nav.light-mode ul li a:hover {
+            background-color: #f39c12;
+            color: #4a90e2;
+        }
+
+        footer.light-mode .social-media-icons a {
+            color: #fff;
+        }
+
+        /* Dark mode styles */
+        body.dark-mode {
+            background-color: #333;
+            color: #f9f9f9;
+            font-family: 'Courier New', monospace; /* Different font for dark mode */
+            margin: 0;
+        }
+
+        header.dark-mode,
+        footer.dark-mode,
+        nav.dark-mode {
+            background-color: #1a1a1a;
+            color: #f9f9f9;
+        }
+
+        nav.dark-mode ul li a {
+            color: #f9f9f9;
+            text-transform: lowercase; /* Different text transformation for dark mode */
+            padding: 5px 10px;
+            border-radius: 3px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        nav.dark-mode ul li a:hover {
+            background-color: #f39c12;
+            color: #1a1a1a;
+        }
+
+        footer.dark-mode .social-media-icons a {
+            color: #f9f9f9;
+        }
+
+        /* Shared styles */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            border-bottom: 3px solid #f39c12;
+        }
+
+        header h1 {
+            margin: 0;
+            text-align: left;
+        }
+
+        header .right-section {
+            display: flex;
+            align-items: center;
+        }
+
+        #search-bar {
+            margin-right: 10px;
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        #product-list {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        #product-list .product {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin: 10px;
+            text-align: center;
+            flex-basis: 30%;
+            box-sizing: border-box;
+        }
+
+        #product-list .product img {
+            max-width: 100px;
+            height: auto;
+        }
+
+        footer {
+            padding: 10px;
+            text-align: center;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        footer .social-media-icons {
+            display: flex;
+            justify-content: center;
+        }
+
+        footer .social-media-icons a {
+            font-size: 20px;
+            margin: 0 10px;
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body class="light-mode">
+    <header>
+        <h1>Product Listing Website</h1>
+        <div class="right-section">
+            <div id="search-bar">
+                <input type="text" id="search-input" placeholder="Search products...">
+                <button id="search-button">Search</button>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Products</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </nav>
+            <!-- Theme switch button -->
+            <button id="theme-switch-button">Switch to Dark Mode</button>
+        </div>
+    </header>
+
+    <main>
+        <section id="product-list">
+            <div class="product" data-name="Product 1">
+                <img src="product1.jpg" alt="Product 1">
+                <h2>Product 1</h2>
+                <p>$19.99</p>
+                <button>Add to Cart</button>
+            </div>
+            <div class="product" data-name="Product 2">
+                <img src="product2.jpg" alt="Product 2">
+                <h2>Product 2</h2>
+                <p>$29.99</p>
+                <button>Add to Cart</button>
+            </div>
+            <div class="product" data-name="Product 3">
+                <img src="product3.jpg" alt="Product 3">
+                <h2>Product 3</h2>
+                <p>$39.99</p>
+                <button>Add to Cart</button>
+            </div>
+            <div class="product" data-name="Product 4">
+                <img src="product4.jpg" alt="Product 4">
+                <h2>Product 4</h2>
+                <p>$49.99</p>
+                <button>Add to Cart</button>
+            </div>
+            <div class="product" data-name="Product 5">
+                <img src="product5.jpg" alt="Product 5">
+                <h2>Product 5</h2>
+                <p>$59.99</p>
+                <button>Add to Cart</button>
+            </div>
+            <div class="product" data-name="Product 6">
+                <img src="product6.jpg" alt="Product 6">
+                <h2>Product 6</h2>
+                <p>$69.99</p>
+                <button>Add to Cart</button>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Your Company Name. All rights reserved.</p>
+        <div class="social-media-icons">
+            <a href="https://www.facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://www.twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+            <a href="https://www.instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+        </div>
+    </footer>
+
+    <script>
+        // JavaScript code for search functionality and theme switch
+        document.addEventListener('DOMContentLoaded', function () {
+            // Function to handle "Add to Cart" button click
+            function addToCart(event) {
+                alert('Product added to cart!');
+            }
+
+            // Add click event listener to "Add to Cart" buttons
+            const addToCartButtons = document.querySelectorAll('button');
+            addToCartButtons.forEach(function (button) {
+                button.addEventListener('click', addToCart);
+            });
+
+            // Function to filter products based on search query
+            function filterProducts() {
+                const query = document.querySelector('#search-input').value.toLowerCase();
+                const products = document.querySelectorAll('.product');
+
+                products.forEach(function (product) {
+                    const productName = product.getAttribute('data-name').toLowerCase();
+                    if (productName.includes(query)) {
+                        product.style.display = 'block';
+                    } else {
+                        product.style.display = 'none';
+                    }
+                });
+            }
+
+            // Add event listener to search button
+            document.querySelector('#search-button').addEventListener('click', filterProducts);
+
+            // Also allow searching when pressing the 'Enter' key in the search input
+            document.querySelector('#search-input').addEventListener('keypress', function (event) {
+                if (event.key === 'Enter') {
+                    filterProducts();
+                }
+            });
+
+            // Function to switch themes
+            function switchTheme() {
+                const body = document.body;
+                const themeSwitchButton = document.querySelector('#theme-switch-button');
+
+                if (body.classList.contains('light-mode')) {
+                    // Switch to dark mode
+                    body.classList.remove('light-mode');
+                    body.classList.add('dark-mode');
+                    themeSwitchButton.textContent = 'Switch to Light Mode';
+                } else {
+                    // Switch to light mode
+                    body.classList.remove('dark-mode');
+                    body.classList.add('light-mode');
+                    themeSwitchButton.textContent = 'Switch to Dark Mode';
+                }
+            }
+
+            // Add event listener to theme switch button
+            document.querySelector('#theme-switch-button').addEventListener('click', switchTheme);
+        });
+    </script>
+</body>
+</html>
