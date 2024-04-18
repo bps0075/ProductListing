@@ -30,6 +30,7 @@
             padding: 5px 10px;
             border-radius: 3px;
             transition: background-color 0.3s, color 0.3s;
+            margin-right: 10px; /* Adding spacing between navigation items */
         }
 
         nav.light-mode ul li a:hover {
@@ -62,6 +63,7 @@
             padding: 5px 10px;
             border-radius: 3px;
             transition: background-color 0.3s, color 0.3s;
+            margin-right: 10px; /* Adding spacing between navigation items */
         }
 
         nav.dark-mode ul li a:hover {
@@ -90,6 +92,26 @@
         header .right-section {
             display: flex;
             align-items: center;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li {
+            margin-right: 10px;
+        }
+
+        nav ul li:last-child {
+            margin-right: 0;
         }
 
         #search-bar {
@@ -148,6 +170,7 @@
                 <input type="text" id="search-input" placeholder="Search products...">
                 <button id="search-button">Search</button>
             </div>
+            <!-- Navigation bar -->
             <nav>
                 <ul>
                     <li><a href="#">Home</a></li>
