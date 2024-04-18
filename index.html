@@ -7,206 +7,236 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Product Listing Website</title>
     <style>
-        /* CSS styles */
+        /* CSS Styles */
         body {
             font-family: Arial, sans-serif;
             margin: 0;
+            padding: 0;
         }
 
-        /* Navbar styles */
+        /* Navbar */
         .navbar {
-            background-color: #1a1a2e;
-            color: white;
-            display: flex;
-            justify-content: space-between;
-            padding: 10px 20px;
-            align-items: center;
-        }
-
-        .navbar h1 {
-            margin: 0;
+            background-color: #4CAF50;
+            overflow: hidden;
+            padding: 10px;
         }
 
         .navbar a {
             color: white;
             text-decoration: none;
-            margin: 0 10px;
+            padding: 14px 20px;
+            display: inline-block;
+            transition: background-color 0.3s;
         }
 
         .navbar a:hover {
-            color: #c5c3c6;
+            background-color: #3e8e41;
         }
 
-        /* Product section styles */
+        .navbar h1 {
+            float: left;
+            margin: 0;
+            color: white;
+            font-size: 24px;
+        }
+
+        .navbar .right-links {
+            float: right;
+        }
+
+        /* Products section */
         .product-section {
             padding: 20px;
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
         }
 
-        .product {
-            margin: 10px;
+        .product-card {
             border: 1px solid #ddd;
             padding: 10px;
-            border-radius: 5px;
-            width: 200px;
-            text-align: center;
-        }
-
-        .product img {
-            width: 100%;
-            height: auto;
-            border-radius: 5px;
-        }
-
-        .search-container {
-            display: flex;
-            justify-content: center;
             margin: 10px;
-        }
-
-        .search-container input {
-            padding: 5px;
-            border-radius: 5px;
-            border: 1px solid #ccc;
-            width: 200px;
-        }
-
-        .search-container button {
-            padding: 5px;
-            margin-left: 10px;
-            border-radius: 5px;
-            border: none;
-            background-color: #1a1a2e;
-            color: white;
-            cursor: pointer;
-        }
-
-        .footer {
-            background-color: #1a1a2e;
-            color: white;
-            padding: 10px 20px;
+            display: inline-block;
+            width: calc(33.33% - 20px);
             text-align: center;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
         }
 
-        .footer i {
-            margin: 0 5px;
-            cursor: pointer;
+        .product-card img {
+            max-width: 100%;
+            height: auto;
         }
 
-        /* Dark mode and light mode styles */
-        .dark-mode {
-            background-color: #1a1a2e;
+        .product-card button {
+            background-color: #4CAF50;
             color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            margin-top: 10px;
         }
 
+        .product-card button:hover {
+            background-color: #45a049;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: #f1f1f1;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .footer a {
+            text-decoration: none;
+            color: #4CAF50;
+        }
+
+        /* Dark mode */
+        .dark-mode {
+            background-color: #2c2c2c;
+            color: #f1f1f1;
+        }
+
+        .dark-mode .navbar {
+            background-color: #333;
+        }
+
+        .dark-mode .footer {
+            background-color: #333;
+        }
+
+        /* Light mode */
         .light-mode {
             background-color: white;
             color: black;
         }
 
-        /* Dark mode button styles */
-        .mode-toggle {
-            margin-right: 20px;
-            padding: 5px 10px;
-            border-radius: 5px;
+        /* Search and mode switch */
+        .search-container {
+            margin: 20px;
+            text-align: center;
+        }
+
+        .search-container input {
+            padding: 10px;
+            margin-right: 10px;
+        }
+
+        .search-container button {
+            background-color: #4CAF50;
+            color: white;
             border: none;
+            padding: 10px;
             cursor: pointer;
         }
 
-        /* Add your custom styles here */
+        .search-container button:hover {
+            background-color: #45a049;
+        }
+
+        /* Mode switch button */
+        .mode-switch {
+            position: fixed;
+            bottom: 10px;
+            right: 10px;
+        }
+
+        /* Responsive design */
+        @media only screen and (max-width: 768px) {
+            .product-card {
+                width: calc(50% - 20px);
+            }
+        }
+
+        @media only screen and (max-width: 480px) {
+            .product-card {
+                width: 100%;
+            }
+        }
     </style>
 </head>
 
-<body>
+<body class="light-mode">
     <!-- Navbar -->
     <div class="navbar">
         <h1>Product Listing Website</h1>
-        <div>
-            <a href="#home">Home</a>
-            <a href="#products">Products</a>
-            <a href="#about">About</a>
-            <a href="#contact">Contact</a>
-            <button class="mode-toggle" id="mode-toggle-btn">Switch to Dark Mode</button>
+        <div class="right-links">
+            <a href="#">Home</a>
+            <a href="#">Products</a>
+            <a href="#">About</a>
+            <a href="#">Contact</a>
         </div>
     </div>
 
-    <!-- Search Container -->
+    <!-- Search container -->
     <div class="search-container">
-        <input type="text" id="search-bar" placeholder="Search for products...">
+        <input type="text" id="searchInput" placeholder="Search for products...">
         <button onclick="searchProducts()">Search</button>
     </div>
 
-    <!-- Product Section -->
-    <div class="product-section" id="product-section">
-        <!-- Add your products here -->
-        <div class="product" data-name="Product 1">
+    <!-- Products section -->
+    <div class="product-section" id="productSection">
+        <!-- Sample product cards -->
+        <div class="product-card">
             <img src="https://via.placeholder.com/150" alt="Product 1">
             <h3>Product 1</h3>
-            <p>$10</p>
+            <p>Product description goes here.</p>
+            <button>Add to Cart</button>
         </div>
-        <div class="product" data-name="Product 2">
+        <div class="product-card">
             <img src="https://via.placeholder.com/150" alt="Product 2">
             <h3>Product 2</h3>
-            <p>$15</p>
+            <p>Product description goes here.</p>
+            <button>Add to Cart</button>
         </div>
-        <div class="product" data-name="Product 3">
+        <div class="product-card">
             <img src="https://via.placeholder.com/150" alt="Product 3">
             <h3>Product 3</h3>
-            <p>$20</p>
+            <p>Product description goes here.</p>
+            <button>Add to Cart</button>
         </div>
-        <!-- Add more products as needed -->
+        <!-- Add more product cards as needed -->
     </div>
 
     <!-- Footer -->
     <div class="footer">
-        <i class="fa fa-facebook" aria-hidden="true"></i>
-        <i class="fa fa-twitter" aria-hidden="true"></i>
-        <i class="fa fa-instagram" aria-hidden="true"></i>
-        <p>&copy; 2024 Product Listing Website</p>
+        <p>Follow us on social media:</p>
+        <a href="#">Facebook</a> |
+        <a href="#">Twitter</a> |
+        <a href="#">Instagram</a>
     </div>
+
+    <!-- Mode switch button -->
+    <button class="mode-switch" onclick="toggleMode()">Toggle Dark Mode</button>
 
     <!-- JavaScript -->
     <script>
-        // Dark mode toggle
-        const modeToggleBtn = document.getElementById('mode-toggle-btn');
-        let isDarkMode = false;
+        function toggleMode() {
+            const body = document.body;
+            const modeSwitch = document.querySelector('.mode-switch');
+            const currentMode = body.classList.contains('dark-mode');
 
-        modeToggleBtn.addEventListener('click', () => {
-            if (isDarkMode) {
-                document.body.classList.remove('dark-mode');
-                document.body.classList.add('light-mode');
-                modeToggleBtn.textContent = 'Switch to Dark Mode';
+            if (currentMode) {
+                body.classList.replace('dark-mode', 'light-mode');
+                modeSwitch.textContent = 'Toggle Dark Mode';
             } else {
-                document.body.classList.remove('light-mode');
-                document.body.classList.add('dark-mode');
-                modeToggleBtn.textContent = 'Switch to Light Mode';
+                body.classList.replace('light-mode', 'dark-mode');
+                modeSwitch.textContent = 'Toggle Light Mode';
             }
-            isDarkMode = !isDarkMode;
-        });
+        }
 
-        // Search function
         function searchProducts() {
-            const searchBar = document.getElementById('search-bar');
-            const searchQuery = searchBar.value.toLowerCase();
-            const products = document.querySelectorAll('.product');
+            const input = document.getElementById('searchInput').value.toLowerCase();
+            const productCards = document.querySelectorAll('.product-card');
 
-            products.forEach(product => {
-                const productName = product.getAttribute('data-name').toLowerCase();
-                if (productName.includes(searchQuery)) {
-                    product.style.display = 'block';
+            productCards.forEach((card) => {
+                const productName = card.querySelector('h3').textContent.toLowerCase();
+                const productDescription = card.querySelector('p').textContent.toLowerCase();
+
+                if (productName.includes(input) || productDescription.includes(input)) {
+                    card.style.display = 'inline-block';
                 } else {
-                    product.style.display = 'none';
+                    card.style.display = 'none';
                 }
             });
         }
-
-        // Initialize mode
-        document.body.classList.add('light-mode');
     </script>
 </body>
 
