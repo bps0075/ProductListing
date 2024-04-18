@@ -7,54 +7,75 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Product Listing Website</title>
     <style>
-        /* CSS Styles */
+        /* Basic CSS styles */
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
+            transition: background-color 0.3s ease;
         }
 
-        /* Navbar */
         .navbar {
-            background-color: #4CAF50;
-            overflow: hidden;
-            padding: 10px;
-        }
-
-        .navbar a {
-            color: white;
-            text-decoration: none;
-            padding: 14px 20px;
-            display: inline-block;
-            transition: background-color 0.3s;
-        }
-
-        .navbar a:hover {
-            background-color: #3e8e41;
+            background-color: #4A90E2;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #fff;
         }
 
         .navbar h1 {
-            float: left;
             margin: 0;
-            color: white;
-            font-size: 24px;
         }
 
-        .navbar .right-links {
-            float: right;
+        .navbar ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
         }
 
-        /* Products section */
-        .product-section {
+        .navbar ul li {
+            margin-left: 20px;
+        }
+
+        .navbar ul li a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .toggle-switch {
+            display: flex;
+            align-items: center;
+        }
+
+        .toggle-switch label {
+            margin-left: 10px;
+        }
+
+        /* Dark mode styles */
+        body.dark-mode {
+            background-color: #2C2C2C;
+            color: #E0E0E0;
+        }
+
+        .dark-mode .navbar {
+            background-color: #1F1F1F;
+        }
+
+        .products {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
             padding: 20px;
         }
 
         .product-card {
-            border: 1px solid #ddd;
-            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
             margin: 10px;
-            display: inline-block;
-            width: calc(33.33% - 20px);
+            padding: 10px;
+            width: 200px;
             text-align: center;
         }
 
@@ -63,180 +84,85 @@
             height: auto;
         }
 
-        .product-card button {
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            padding: 10px;
-            cursor: pointer;
-            margin-top: 10px;
-        }
-
-        .product-card button:hover {
-            background-color: #45a049;
-        }
-
-        /* Footer */
         .footer {
-            background-color: #f1f1f1;
-            padding: 10px;
+            background-color: #4A90E2;
+            padding: 15px;
+            color: #fff;
             text-align: center;
         }
 
+        /* Footer social media icons */
         .footer a {
+            margin: 0 10px;
+            color: #fff;
             text-decoration: none;
-            color: #4CAF50;
-        }
-
-        /* Dark mode */
-        .dark-mode {
-            background-color: #2c2c2c;
-            color: #f1f1f1;
-        }
-
-        .dark-mode .navbar {
-            background-color: #333;
-        }
-
-        .dark-mode .footer {
-            background-color: #333;
-        }
-
-        /* Light mode */
-        .light-mode {
-            background-color: white;
-            color: black;
-        }
-
-        /* Search and mode switch */
-        .search-container {
-            margin: 20px;
-            text-align: center;
-        }
-
-        .search-container input {
-            padding: 10px;
-            margin-right: 10px;
-        }
-
-        .search-container button {
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            padding: 10px;
-            cursor: pointer;
-        }
-
-        .search-container button:hover {
-            background-color: #45a049;
-        }
-
-        /* Mode switch button */
-        .mode-switch {
-            position: fixed;
-            bottom: 10px;
-            right: 10px;
-        }
-
-        /* Responsive design */
-        @media only screen and (max-width: 768px) {
-            .product-card {
-                width: calc(50% - 20px);
-            }
-        }
-
-        @media only screen and (max-width: 480px) {
-            .product-card {
-                width: 100%;
-            }
         }
     </style>
 </head>
 
-<body class="light-mode">
+<body>
     <!-- Navbar -->
     <div class="navbar">
         <h1>Product Listing Website</h1>
-        <div class="right-links">
-            <a href="#">Home</a>
-            <a href="#">Products</a>
-            <a href="#">About</a>
-            <a href="#">Contact</a>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Products</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+        <div class="toggle-switch">
+            <input type="checkbox" id="darkModeSwitch">
+            <label for="darkModeSwitch">Dark Mode</label>
         </div>
     </div>
 
-    <!-- Search container -->
-    <div class="search-container">
-        <input type="text" id="searchInput" placeholder="Search for products...">
-        <button onclick="searchProducts()">Search</button>
-    </div>
-
-    <!-- Products section -->
-    <div class="product-section" id="productSection">
-        <!-- Sample product cards -->
+    <!-- Product section -->
+    <div class="products">
         <div class="product-card">
             <img src="https://via.placeholder.com/150" alt="Product 1">
             <h3>Product 1</h3>
-            <p>Product description goes here.</p>
+            <p>$19.99</p>
             <button>Add to Cart</button>
         </div>
         <div class="product-card">
             <img src="https://via.placeholder.com/150" alt="Product 2">
             <h3>Product 2</h3>
-            <p>Product description goes here.</p>
+            <p>$29.99</p>
             <button>Add to Cart</button>
         </div>
         <div class="product-card">
             <img src="https://via.placeholder.com/150" alt="Product 3">
             <h3>Product 3</h3>
-            <p>Product description goes here.</p>
+            <p>$39.99</p>
             <button>Add to Cart</button>
         </div>
-        <!-- Add more product cards as needed -->
+        <div class="product-card">
+            <img src="https://via.placeholder.com/150" alt="Product 4">
+            <h3>Product 4</h3>
+            <p>$49.99</p>
+            <button>Add to Cart</button>
+        </div>
     </div>
 
     <!-- Footer -->
     <div class="footer">
-        <p>Follow us on social media:</p>
-        <a href="#">Facebook</a> |
-        <a href="#">Twitter</a> |
+        <p>Connect with us:</p>
+        <a href="#">Facebook</a>
+        <a href="#">Twitter</a>
         <a href="#">Instagram</a>
     </div>
 
-    <!-- Mode switch button -->
-    <button class="mode-switch" onclick="toggleMode()">Toggle Dark Mode</button>
-
-    <!-- JavaScript -->
+    <!-- JavaScript for dark mode toggle -->
     <script>
-        function toggleMode() {
-            const body = document.body;
-            const modeSwitch = document.querySelector('.mode-switch');
-            const currentMode = body.classList.contains('dark-mode');
+        const darkModeSwitch = document.getElementById('darkModeSwitch');
 
-            if (currentMode) {
-                body.classList.replace('dark-mode', 'light-mode');
-                modeSwitch.textContent = 'Toggle Dark Mode';
+        darkModeSwitch.addEventListener('change', function () {
+            if (darkModeSwitch.checked) {
+                document.body.classList.add('dark-mode');
             } else {
-                body.classList.replace('light-mode', 'dark-mode');
-                modeSwitch.textContent = 'Toggle Light Mode';
+                document.body.classList.remove('dark-mode');
             }
-        }
-
-        function searchProducts() {
-            const input = document.getElementById('searchInput').value.toLowerCase();
-            const productCards = document.querySelectorAll('.product-card');
-
-            productCards.forEach((card) => {
-                const productName = card.querySelector('h3').textContent.toLowerCase();
-                const productDescription = card.querySelector('p').textContent.toLowerCase();
-
-                if (productName.includes(input) || productDescription.includes(input)) {
-                    card.style.display = 'inline-block';
-                } else {
-                    card.style.display = 'none';
-                }
-            });
-        }
+        });
     </script>
 </body>
 
